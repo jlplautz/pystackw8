@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pystackw8"
+version = "0.1.0"
+description = "Project based on Pythonando - Out23"
+authors = ["Jorge Luiz Plautz <jorge.plautz@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.5"
+pillow = "^10.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
