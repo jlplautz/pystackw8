@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+
 from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9#*iqxs2q50vi_dcp*+b9)yv9rfnjyv3rwisz93x(mf)$c)t(3'
+SECRET_KEY = (
+    'django-insecure-9#*iqxs2q50vi_dcp*+b9)yv9rfnjyv3rwisz93x(mf)$c)t(3'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -131,12 +134,10 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 MESSAGE_TAGS = {
-constants.DEBUG: 'alert-primary',
-constants.ERROR: 'alert-danger',
-constants.WARNING: 'alert-warning',
-constants.SUCCESS: 'alert-success',
-constants.INFO: 'alert-info',
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.WARNING: 'alert-warning',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
 }
