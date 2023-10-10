@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('vitalab.usuarios.urls')),
     path('exames/', include('vitalab.exames.urls')),
+    path('empresarial/', include('vitalab.empresarial.urls')),
+    path('', lambda request: redirect('/usuarios/logar')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

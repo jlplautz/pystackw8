@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 django = "^4.2.5"
 pillow = "^10.0.1"
+weasyprint = "^60.1"
 
 
 [tool.poetry.group.dev.dependencies]
