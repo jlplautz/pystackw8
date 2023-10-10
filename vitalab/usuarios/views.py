@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.contrib.messages import constants
 from django.shortcuts import redirect, render
 
@@ -24,10 +25,22 @@ def cadastro(request):
             return redirect('/usuarios/cadastro')
 
         if len(senha) < 6:
+            messages.add_message(
+                request,
+                constants.ERROR,
+                'Sua senha deve ter mais de 6 caracteres',
+            )
+            return redirect('/usuarios/cadastro')
+
+        if User.objects.filter(username=username).exists():
+            messages.add_messages(
+                request,
+                constants.ERROR,
+                'Já existe um com este Username.',
+            )
             return redirect('/usuarios/cadastro')
 
         try:
-            # Username deve ser único!
             user = User.objects.create_user(
                 first_name=primeiro_nome,
                 last_name=ultimo_nome,
@@ -35,21 +48,21 @@ def cadastro(request):
                 email=email,
                 password=senha,
             )
-        except:
+        except Exception:
             return redirect('/usuarios/cadastro')
 
         return redirect('/usuarios/cadastro')
 
 
-def login(request):
+def logar(request):
     if request.method == 'GET':
         return render(request, 'usuarios/login.html')
     else:
         username = request.POST.get('username')
         senha = request.POST.get('senha')
-        user = auth.authenticate(username=username, password=senha)
+        user = authenticate(username=username, password=senha)
         if user:
-            auth.login(request, user)
+            login(request, user)
             # Acontecerá um erro ao redirecionar por enquanto,
             # resolveremos nos próximos passos
             return redirect('/usuarios/login')
@@ -59,4 +72,4 @@ def login(request):
                 constants.ERROR,
                 'Usuario ou senha inválidos',
             )
-            return redirect('/usuarios/login')
+        return redirect('/usuarios/login')
