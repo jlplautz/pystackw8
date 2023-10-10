@@ -40,15 +40,11 @@ def gerar_senha_aleatoria(tamanho):
 def gerar_pdf_exames(exame, paciente, senha):
 
     path_template = os.path.join(
-        settings.BASE_DIR, 'templates/partials/senha_exame.html'
+        settings.BASE_DIR, 'vitalab/templates/partials/senha_exame.html'
     )
 
-    template_render = (
-        render_to_string(
-            path_template,
-            {'exame': exame, 'paciente': paciente, 'senha': senha},
-        ),
-    )
+    template_render = render_to_string(
+        path_template, {'exame': exame, 'paciente': paciente, 'senha': senha})
 
     path_output = BytesIO()
 

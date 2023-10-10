@@ -118,3 +118,14 @@ No botão Gerar senha de exame_cliente.html redireciona para URL criada:
 ```bash
 <a style="text-decoration: none;" href="{% url "gerar_senha" exame.id %}" class="btn-secundario">Gerar senha</a>
 ```
+
+Para fazer o teste com gerar_pdf_exaes
+```bsh
+❯ mng shell
+Python 3.11.0 (main, Dec  8 2022, 08:41:16) [GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from vitalab.empresarial.utils import gerar_pdf_exames
+>>> gerar_pdf_exames('raiox','plautz','1234')
+<_io.BytesIO object at 0x7fa5c146b650>
+```
